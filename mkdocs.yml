@@ -1,10 +1,10 @@
 site_name: SGL — Structured Graphics Language
-site_url: https://jochapjo.github.io/sgl-docs
+site_url: https://sgl-projects.github.io/sgl-docs
 site_description: Documentation for SGL, a declarative language for generating data visualizations from database connections.
 site_author: Jon Chapman
 
-repo_url: https://github.com/jochapjo/sgl-docs
-repo_name: jochapjo/sgl-docs
+repo_url: https://github.com/sgl-projects/sgl-docs
+repo_name: sgl-projects/sgl-docs
 
 theme:
   name: material
