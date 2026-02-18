@@ -1,6 +1,8 @@
 # SGL — Structured Graphics Language
 
-SGL is a graphics language with syntax aesthetically similar to SQL. Built on a customized [grammar of graphics](https://arxiv.org/abs/2505.14690), it is concise yet expressive. SGL is designed to facilitate the specification of graphics in environments that support SQL queries.
+SGL is a graphics language with syntax aesthetically similar to SQL. Built on a customized [grammar of graphics](https://arxiv.org/pdf/2505.14690), it is concise yet expressive. SGL is designed to facilitate the specification of graphics in environments that support SQL queries.
+
+This site documents the SGL language itself, independent of any specific implementation. For implementation-specific details, see [Implementations](implementations.md).
 
 ## A Taste of SGL
 
