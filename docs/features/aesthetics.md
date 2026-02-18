@@ -30,14 +30,14 @@ SGL supports six aesthetics, divided into two coordinate systems and two non-pos
 
 | Aesthetic | Description |
 |-----------|-------------|
-| `theta` | Angle position (maps internally to the x axis in polar coordinates) |
-| `r` | Radius position (maps internally to the y axis in polar coordinates) |
+| `theta` | Angle position |
+| `r` | Radius position |
 
 ### Non-Positional Aesthetics
 
 | Aesthetic | Description |
 |-----------|-------------|
-| `color` | Color encoding (stroke for points/lines, fill for bars) |
+| `color` | Color encoding |
 | `size` | Size encoding (points only) |
 
 ## Coordinate Systems

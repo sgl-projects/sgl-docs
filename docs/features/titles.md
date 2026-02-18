@@ -74,4 +74,4 @@ visualize hp as x, mpg as y from cars using points title size as 'Weight'
 All six aesthetics can receive titles: `x`, `y`, `color`, `size`, `theta`, `r`.
 
 !!! note
-    For bar charts, the `color` title applies to the fill legend (since bar `color` maps to fill internally).
+    For bar charts, the `color` title labels the legend for bar interior color.

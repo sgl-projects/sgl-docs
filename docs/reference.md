@@ -216,9 +216,9 @@ All keywords are **case-sensitive** and **lowercase**:
 |------|------|-------------|
 | `x` | Cartesian positional | Horizontal axis |
 | `y` | Cartesian positional | Vertical axis |
-| `theta` | Polar positional | Angle (maps to x internally) |
-| `r` | Polar positional | Radius (maps to y internally) |
-| `color` | Non-positional | Color or fill encoding |
+| `theta` | Polar positional | Angle |
+| `r` | Polar positional | Radius |
+| `color` | Non-positional | Color encoding |
 | `size` | Non-positional | Size encoding (points only) |
 
 ### Geom Names
@@ -336,7 +336,7 @@ Every layer must have at least one positional aesthetic. A layer cannot mix Cart
 - With one positional aesthetic: it must be numerical or temporal (unbinned).
 - With two positional aesthetics: one must be categorical/binned, the other numerical/temporal (unbinned).
 - Valid modifiers: `unstacked` (or default).
-- `color` maps to fill (not stroke).
+- `color` controls the bar interior color, not the outline.
 
 **Lines:**
 

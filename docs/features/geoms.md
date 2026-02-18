@@ -64,7 +64,7 @@ visualize cut as x, price as y from diamonds using bars
 - With **one** positional aesthetic: it must be numerical or temporal (unbinned).
 - With **two** positional aesthetics: one must be categorical or binned, the other numerical or temporal (unbinned).
 - The `size` aesthetic is **not valid** for bars.
-- The `color` aesthetic maps to **fill** (not stroke).
+- The `color` aesthetic controls the bar interior color, not the outline.
 
 ### Stacked Bars (Default)
 

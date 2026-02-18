@@ -12,8 +12,8 @@ visualize column as theta, column as r from table using geom
 
 | Aesthetic | Description |
 |-----------|-------------|
-| `theta` | Angle position (maps internally to the x axis) |
-| `r` | Radius position (maps internally to the y axis) |
+| `theta` | Angle position |
+| `r` | Radius position |
 
 ## Coordinate System Constraint
 
