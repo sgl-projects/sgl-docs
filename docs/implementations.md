@@ -8,7 +8,7 @@ SGL is a **language specification** — it defines the syntax and semantics for 
 
 ### rsgl (R)
 
-**Repository:** [github.com/jochapjo/rsgl](https://github.com/jochapjo/rsgl)
+**Repository:** [github.com/sgl-projects/rsgl](https://github.com/sgl-projects/rsgl)
 
 rsgl is the first implementation of SGL, built for the R ecosystem. It connects to databases via DBI, parses SGL statements, and renders visualizations using ggplot2.
 
@@ -16,7 +16,7 @@ Key features:
 
 - Works with any DBI-compatible database (DuckDB, PostgreSQL, SQLite, etc.)
 - Renders plots as ggplot2 objects, so they can be further customized with ggplot2 functions
-- Bundles the [sglref](https://github.com/jochapjo/sglref) reference parser for correct SGL parsing
+- Bundles the [sglref](https://github.com/sgl-projects/sglref) reference parser for correct SGL parsing
 
 ---
 
