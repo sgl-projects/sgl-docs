@@ -1,6 +1,6 @@
 # Getting Started
 
-This guide walks you through the basics of SGL with progressive examples. By the end, you'll understand how to write SGL statements for common visualization tasks.
+This guide introduces the basics of SGL through progressive examples, covering the core concepts needed to write SGL statements for common visualization tasks.
 
 ## Statement Structure
 
@@ -40,7 +40,7 @@ The `cyl` column is mapped to the `color` aesthetic, automatically creating a le
 
 ## Example 3: Changing the Geom
 
-Swap `points` for `bars` or `line` to change the chart type entirely:
+Replacing `points` with `bars` or `line` changes the chart type:
 
 ```sql
 visualize cut as x, price as y from diamonds using bars
@@ -66,7 +66,7 @@ visualize cut as x, count(*) as y from diamonds group by cut using bars
 
 ![Count bar chart](assets/images/count-bar-chart.png)
 
-The rule is straightforward: when you use `count(*)`, every other mapped column must appear in the `group by` clause. Here, `cut` is the only non-aggregated mapping, so it goes in `group by`.
+When `count(*)` is present, every non-aggregated mapped column must appear in the `group by` clause. Here, `cut` is the only non-aggregated mapping, so it goes in `group by`.
 
 Combine `bin()` with `count(*)` for histograms:
 
@@ -88,11 +88,11 @@ visualize hp as x, mpg as y from cars using (points layer regression line)
 
 ![Scatterplot with regression line](assets/images/scatterplot-regression-shorthand.png)
 
-This produces a scatterplot with an overlaid regression line — a common pattern for exploring relationships between variables. See [Layering](features/layering.md) for the full syntax.
+This produces a scatterplot with an overlaid regression line. See [Layering](features/layering.md) for the full syntax.
 
-## What's Next
+## Further Reading
 
-These five examples cover the core of SGL. There's much more to explore:
+The examples above cover the core of SGL. The following pages document additional features:
 
 - **[Aesthetic Mappings](features/aesthetics.md)** — All 6 aesthetics including size and polar coordinates
 - **[Collections](features/collections.md)** — Multi-series line charts and grouped box plots
@@ -100,4 +100,4 @@ These five examples cover the core of SGL. There's much more to explore:
 - **[Faceting](features/faceting.md)** — Split plots into panels
 - **[Titles](features/titles.md)** — Custom axis and legend labels
 - **[Subqueries](features/subqueries.md)** — Preprocess data with SQL before plotting
-- **[Examples Gallery](examples.md)** — A comprehensive collection of SGL visualizations
+- **[Examples Gallery](examples.md)** — A collection of SGL visualizations by category

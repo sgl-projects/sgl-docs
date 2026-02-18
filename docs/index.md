@@ -18,6 +18,6 @@ This single statement produces a scatterplot with horsepower on the x-axis, mile
 
 - **[Getting Started](getting-started.md)** — Learn the basics with progressive examples
 - **[Language Reference](reference.md)** — Complete grammar and semantic specification
-- **[Features](features/aesthetics.md)** — Deep dives into each SGL feature
-- **[Examples Gallery](examples.md)** — A curated collection of SGL visualizations
+- **[Features](features/aesthetics.md)** — Detailed documentation for each SGL feature
+- **[Examples Gallery](examples.md)** — A collection of SGL visualizations by category
 - **[Implementations](implementations.md)** — Available SGL implementations

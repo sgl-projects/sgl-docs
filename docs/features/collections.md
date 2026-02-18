@@ -17,7 +17,7 @@ visualize letter as x, number as y from synth collect by boolean using lines
 
 ## What collect by Does
 
-While [`group by`](grouping.md) performs SQL-level aggregation (combining rows with `count(*)`), `collect by` creates **visual groupings** — the data is drawn as separate series on the same plot. Under the hood, collection columns map to the `group` aesthetic, which tells the plotting engine to draw separate geometric objects for each group.
+While [`group by`](grouping.md) performs SQL-level aggregation (combining rows with `count(*)`), `collect by` creates **visual groupings** — the data is drawn as separate series on the same plot. Collection columns map to the `group` aesthetic, which instructs the rendering engine to draw separate geometric objects for each group.
 
 ## Collective Geoms
 

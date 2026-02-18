@@ -1,6 +1,6 @@
 # Examples Gallery
 
-A curated collection of SGL examples organized by category. Each example shows the SGL statement and its rendered output.
+SGL examples organized by category. Each example shows the SGL statement and its rendered output.
 
 ---
 

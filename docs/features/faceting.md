@@ -1,6 +1,6 @@
 # Faceting
 
-Faceting splits a plot into multiple panels based on the values of one or two categorical columns. Each panel shows a subset of the data, making it easy to compare patterns across groups.
+Faceting splits a plot into multiple panels based on the values of one or two categorical columns. Each panel shows a subset of the data corresponding to a distinct value of the facet column.
 
 ## Syntax
 

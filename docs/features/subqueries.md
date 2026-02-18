@@ -1,6 +1,6 @@
 # Subqueries
 
-The `from` clause accepts either a table name or a parenthesized SQL subquery. Subqueries let you preprocess data — filtering rows, casting types, or computing derived columns — before visualization.
+The `from` clause accepts either a table name or a parenthesized SQL subquery. Subqueries allow preprocessing of data — filtering rows, casting types, or computing derived columns — before visualization.
 
 ## Syntax
 

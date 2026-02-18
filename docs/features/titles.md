@@ -41,7 +41,7 @@ title x as 'Horsepower', y as 'Miles Per Gallon', color as 'Cylinders'
 
 ### Labeling a Single Axis
 
-You don't have to title every aesthetic — only the ones you want to override:
+Titles can be set for individual aesthetics without titling all of them:
 
 ```sql
 visualize hp as x, mpg as y from cars using points

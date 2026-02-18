@@ -87,4 +87,4 @@ visualize hp as x, mpg as y from cars using (points layer regression line)
 ![Scatterplot with regression line (shorthand)](../assets/images/scatterplot-regression-shorthand.png)
 
 !!! tip
-    Use the shorthand form when layers share all their clauses. It's more concise and less error-prone than repeating everything.
+    The shorthand form is preferred when layers share all their clauses, as it avoids redundant repetition of mappings and data sources.
