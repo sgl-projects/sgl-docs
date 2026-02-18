@@ -14,7 +14,13 @@ direction    = "horizontally" | "vertically"
 The `facet` clause appears after the last `using` clause (it is a graphic clause that applies globally):
 
 ```sql
-visualize hp as x, mpg as y from cars using points facet by cyl_cat
+visualize
+  hp as x,
+  mpg as y
+from cars
+using points
+facet by
+  cyl_cat
 ```
 
 ## Single Facet (Wrapping)
@@ -22,10 +28,13 @@ visualize hp as x, mpg as y from cars using points facet by cyl_cat
 With one facet column and no direction specified, panels wrap automatically:
 
 ```sql
-visualize hp as x, mpg as y
+visualize
+  hp as x,
+  mpg as y
 from (select *, cast(cyl as varchar) as cyl_cat from cars)
 using points
-facet by cyl_cat
+facet by
+  cyl_cat
 ```
 
 ![Faceted scatterplot](../assets/images/faceted-scatterplot.png)
@@ -35,11 +44,19 @@ facet by cyl_cat
 With two facet columns, specify `horizontally` and `vertically` to create a 2D grid of panels:
 
 ```sql
-visualize hp as x, mpg as y
-from (select *, cast(cyl as varchar) as cyl_cat,
-                cast(am as varchar) as am_cat from cars)
+visualize
+  hp as x,
+  mpg as y
+from (
+  select *,
+    cast(cyl as varchar) as cyl_cat,
+    cast(am as varchar) as am_cat
+  from cars
+)
 using points
-facet by cyl_cat horizontally, am_cat vertically
+facet by
+  cyl_cat horizontally,
+  am_cat vertically
 ```
 
 ![Two-dimensional faceted scatterplot](../assets/images/faceted-2d-scatterplot.png)
@@ -65,10 +82,13 @@ Facet columns must be **categorical** type (VARCHAR, BOOLEAN, etc.) in all layer
 
 ```sql
 -- Cast numerical cyl to categorical before faceting
-visualize hp as x, mpg as y
+visualize
+  hp as x,
+  mpg as y
 from (select *, cast(cyl as varchar) as cyl_cat from cars)
 using points
-facet by cyl_cat
+facet by
+  cyl_cat
 ```
 
 ### Column Must Exist

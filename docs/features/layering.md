@@ -13,9 +13,17 @@ layer_list = layer_expression { "layer" layer_expression }
 ```
 
 ```sql
-visualize hp as x, mpg as y from cars using points
+visualize
+  hp as x,
+  mpg as y
+from cars
+using points
 layer
-visualize hp as x, mpg as y from cars using regression line
+visualize
+  hp as x,
+  mpg as y
+from cars
+using regression line
 ```
 
 ![Scatterplot with regression line](../assets/images/scatterplot-regression-layer.png)
@@ -32,7 +40,11 @@ layered_geom_list = geom_expr { "layer" geom_expr }
 ```
 
 ```sql
-visualize hp as x, mpg as y from cars using (points layer regression line)
+visualize
+  hp as x,
+  mpg as y
+from cars
+using (points layer regression line)
 ```
 
 ![Scatterplot with regression line (shorthand)](../assets/images/scatterplot-regression-shorthand.png)
@@ -60,14 +72,31 @@ If a positional aesthetic (`x`, `y`, `theta`, `r`) appears in one layer, it must
 
 ```sql
 -- Valid: both layers have x and y
-visualize hp as x, mpg as y from cars using points
+visualize
+  hp as x,
+  mpg as y
+from cars
+using points
 layer
-visualize hp as x, mpg as y from cars using regression line
+visualize
+  hp as x,
+  mpg as y
+from cars
+using regression line
+```
 
+```sql
 -- Invalid: first layer has x and y, second only has x
-visualize hp as x, mpg as y from cars using points
+visualize
+  hp as x,
+  mpg as y
+from cars
+using points
 layer
-visualize hp as x from cars using points
+visualize
+  hp as x
+from cars
+using points
 ```
 
 ### Type Consistency
@@ -81,7 +110,11 @@ The same aesthetic must be mapped to the same type (numerical, categorical, or t
 The most common layering pattern — raw data as points with an overlaid regression line:
 
 ```sql
-visualize hp as x, mpg as y from cars using (points layer regression line)
+visualize
+  hp as x,
+  mpg as y
+from cars
+using (points layer regression line)
 ```
 
 ![Scatterplot with regression line (shorthand)](../assets/images/scatterplot-regression-shorthand.png)

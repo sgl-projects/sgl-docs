@@ -12,7 +12,13 @@ collection_list   = col_expr { "," col_expr }
 The `collect by` clause appears after `group by` (if present) and before `using`:
 
 ```sql
-visualize letter as x, number as y from synth collect by boolean using lines
+visualize
+  letter as x,
+  number as y
+from synth
+collect by
+  boolean
+using lines
 ```
 
 ## What collect by Does
@@ -39,7 +45,13 @@ Using `collect by` with a non-collective geom produces an error.
 The most common use of `collect by` is drawing multiple lines on the same plot:
 
 ```sql
-visualize letter as x, number as y from synth collect by boolean using lines
+visualize
+  letter as x,
+  number as y
+from synth
+collect by
+  boolean
+using lines
 ```
 
 ![Multi-line chart](../assets/images/multi-line.png)
@@ -54,10 +66,24 @@ When no `group by` clause is present, all collection expressions must be plain c
 
 ```sql
 -- Valid: plain column name
-visualize letter as x, number as y from synth collect by boolean using lines
+visualize
+  letter as x,
+  number as y
+from synth
+collect by
+  boolean
+using lines
+```
 
+```sql
 -- Invalid: cannot use bin() in collect by without group by
-visualize letter as x, number as y from synth collect by bin(number) using lines
+visualize
+  letter as x,
+  number as y
+from synth
+collect by
+  bin(number)
+using lines
 ```
 
 ### With group by

@@ -7,7 +7,12 @@ This site documents the SGL language itself, independent of any specific impleme
 ## A Taste of SGL
 
 ```sql
-visualize hp as x, mpg as y, cyl as color from cars using points
+visualize
+  hp as x,
+  mpg as y,
+  cyl as color
+from cars
+using points
 ```
 
 ![Scatterplot of hp vs mpg colored by cyl](assets/images/scatterplot-color.png)

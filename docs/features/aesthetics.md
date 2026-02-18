@@ -12,7 +12,11 @@ aes_mappings = aes_mapping { "," aes_mapping }
 Aesthetic mappings appear immediately after the `visualize` keyword, separated by commas:
 
 ```sql
-visualize column1 as x, column2 as y, column3 as color from ...
+visualize
+  column1 as x,
+  column2 as y,
+  column3 as color
+from ...
 ```
 
 ## Available Aesthetics
@@ -60,10 +64,13 @@ Invalid:
 
 ## One-Dimensional Plots
 
-You can map just one positional aesthetic. When only `x` or only `y` is provided, the other axis is left empty, producing a strip plot:
+Mapping just one positional aesthetic produces a strip plot, with the other axis left empty:
 
 ```sql
-visualize mpg as x from cars using points
+visualize
+  mpg as x
+from cars
+using points
 ```
 
 ![One-dimensional scatter plot of mpg](../assets/images/one-dim-scatter.png)
@@ -75,7 +82,11 @@ visualize mpg as x from cars using points
 Map two columns to `x` and `y`:
 
 ```sql
-visualize hp as x, mpg as y from cars using points
+visualize
+  hp as x,
+  mpg as y
+from cars
+using points
 ```
 
 ![Basic scatterplot of hp vs mpg](../assets/images/basic-scatterplot.png)
@@ -85,7 +96,12 @@ visualize hp as x, mpg as y from cars using points
 Add a third column to `color`:
 
 ```sql
-visualize hp as x, mpg as y, cyl as color from cars using points
+visualize
+  hp as x,
+  mpg as y,
+  cyl as color
+from cars
+using points
 ```
 
 ![Scatterplot with color encoding](../assets/images/scatterplot-color.png)
@@ -95,7 +111,12 @@ visualize hp as x, mpg as y, cyl as color from cars using points
 Map a numerical column to `size` (points only):
 
 ```sql
-visualize hp as x, mpg as y, wt as size from cars using points
+visualize
+  hp as x,
+  mpg as y,
+  wt as size
+from cars
+using points
 ```
 
 ![Scatterplot with size encoding](../assets/images/scatterplot-size.png)

@@ -12,7 +12,13 @@ grouping_list   = col_expr { "," col_expr }
 The `group by` clause appears after the `from` clause and before any `collect by` or `using` clause:
 
 ```sql
-visualize cut as x, count(*) as y from diamonds group by cut using bars
+visualize
+  cut as x,
+  count(*) as y
+from diamonds
+group by
+  cut
+using bars
 ```
 
 ## Rules
@@ -23,12 +29,22 @@ When any aesthetic mapping uses an aggregation (currently only `count(*)`), ever
 
 ```sql
 -- Valid: cut is non-aggregated and appears in group by
-visualize cut as x, count(*) as y from diamonds group by cut using bars
+visualize
+  cut as x,
+  count(*) as y
+from diamonds
+group by
+  cut
+using bars
 ```
 
 ```sql
 -- Invalid: cut is non-aggregated but missing from group by
-visualize cut as x, count(*) as y from diamonds using bars
+visualize
+  cut as x,
+  count(*) as y
+from diamonds
+using bars
 ```
 
 !!! warning
@@ -40,7 +56,13 @@ If a `group by` clause is provided, at least one aggregation must be present in 
 
 ```sql
 -- Invalid: group by present but no aggregation
-visualize hp as x, mpg as y from cars group by hp using points
+visualize
+  hp as x,
+  mpg as y
+from cars
+group by
+  hp
+using points
 ```
 
 ### No Aggregations in group by
@@ -49,7 +71,13 @@ Grouping expressions themselves cannot be aggregations:
 
 ```sql
 -- Invalid: cannot group by an aggregation
-visualize cut as x, count(*) as y from diamonds group by count(*) using bars
+visualize
+  cut as x,
+  count(*) as y
+from diamonds
+group by
+  count(*)
+using bars
 ```
 
 ## Grouping with bin()
@@ -57,7 +85,13 @@ visualize cut as x, count(*) as y from diamonds group by count(*) using bars
 The `bin()` transformation can appear in both the aesthetic mapping and the `group by` clause. When it does, binning is applied before aggregation:
 
 ```sql
-visualize bin(mpg) as x, count(*) as y from cars group by bin(mpg) using bars
+visualize
+  bin(mpg) as x,
+  count(*) as y
+from cars
+group by
+  bin(mpg)
+using bars
 ```
 
 ![Histogram](../assets/images/histogram.png)
@@ -69,9 +103,14 @@ The `bin(mpg)` expression in the `group by` clause matches the `bin(mpg)` in the
 Multiple columns can be grouped by separating them with commas:
 
 ```sql
-visualize bin(mpg) as x, count(*) as y, cyl_cat as color
+visualize
+  bin(mpg) as x,
+  count(*) as y,
+  cyl_cat as color
 from (select *, cast(cyl as varchar) as cyl_cat from cars)
-group by bin(mpg), cyl_cat
+group by
+  bin(mpg),
+  cyl_cat
 using bars
 ```
 

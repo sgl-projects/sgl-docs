@@ -12,7 +12,9 @@ from_clause = "from" table_name
 When `from` is followed by an opening parenthesis `(`, everything up to the matching closing parenthesis `)` is captured as the SQL subquery text. Nested parentheses are tracked and balanced automatically.
 
 ```sql
-visualize hp as x, mpg as y
+visualize
+  hp as x,
+  mpg as y
 from (select hp, mpg from cars where cyl = 4)
 using points
 ```
@@ -24,7 +26,10 @@ using points
 Database columns sometimes have numerical types that should be treated as categories for visualization. Use a subquery to cast them:
 
 ```sql
-visualize hp as x, mpg as y, cyl as color
+visualize
+  hp as x,
+  mpg as y,
+  cyl as color
 from (select hp, mpg, cyl::varchar as cyl from cars)
 using points
 ```
@@ -39,7 +44,9 @@ This is especially important for:
 Select a subset of the data before plotting:
 
 ```sql
-visualize hp as x, mpg as y
+visualize
+  hp as x,
+  mpg as y
 from (select * from cars where mpg > 20)
 using points
 ```
@@ -51,7 +58,10 @@ using points
 Compute new columns for visualization:
 
 ```sql
-visualize hp as x, mpg as y, cyl_cat as color
+visualize
+  hp as x,
+  mpg as y,
+  cyl_cat as color
 from (select hp, mpg, cast(cyl as varchar) as cyl_cat from cars)
 using points
 ```
@@ -61,7 +71,9 @@ using points
 Subqueries can contain nested parentheses (e.g., for SQL function calls or sub-subqueries). The parser tracks parenthesis depth to find the correct closing parenthesis:
 
 ```sql
-visualize hp as x, mpg as y
+visualize
+  hp as x,
+  mpg as y
 from (select hp, mpg from cars where cyl in (4, 6))
 using points
 ```

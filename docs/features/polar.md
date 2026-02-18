@@ -7,7 +7,11 @@ SGL supports polar coordinate plots by using the `theta` (angle) and `r` (radius
 Polar aesthetics are used in the same way as Cartesian aesthetics:
 
 ```sql
-visualize column as theta, column as r from table using geom
+visualize
+  column as theta,
+  column as r
+from table
+using geom
 ```
 
 | Aesthetic | Description |
@@ -21,10 +25,22 @@ Cartesian and polar aesthetics **cannot be mixed** within the same layer. A laye
 
 ```sql
 -- Valid
-visualize count(*) as theta, cut as color from diamonds group by cut using bars
+visualize
+  count(*) as theta,
+  cut as color
+from diamonds
+group by
+  cut
+using bars
+```
 
+```sql
 -- Invalid: mixing x and theta
-visualize hp as x, count(*) as theta from cars using points
+visualize
+  hp as x,
+  count(*) as theta
+from cars
+using points
 ```
 
 ## Pie Charts
@@ -32,7 +48,13 @@ visualize hp as x, count(*) as theta from cars using points
 The most common polar coordinate pattern is the pie chart. Combine `count(*)` as `theta` with a categorical `color` aesthetic and the `bars` geom:
 
 ```sql
-visualize count(*) as theta, cut as color from diamonds group by cut using bars
+visualize
+  count(*) as theta,
+  cut as color
+from diamonds
+group by
+  cut
+using bars
 ```
 
 ![Pie chart](../assets/images/pie-chart.png)
@@ -49,7 +71,13 @@ This works because:
 Like Cartesian plots, polar plots can use just one positional aesthetic:
 
 ```sql
-visualize count(*) as theta, cut as color from diamonds group by cut using bars
+visualize
+  count(*) as theta,
+  cut as color
+from diamonds
+group by
+  cut
+using bars
 ```
 
 Here only `theta` is specified — no `r` mapping.

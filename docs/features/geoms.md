@@ -28,7 +28,11 @@ Both singular and plural forms are accepted for all geom names:
 Points render each row as an individual dot on the plot, producing scatterplots and strip plots.
 
 ```sql
-visualize hp as x, mpg as y from cars using points
+visualize
+  hp as x,
+  mpg as y
+from cars
+using points
 ```
 
 ![Basic scatterplot](../assets/images/basic-scatterplot.png)
@@ -42,7 +46,10 @@ Points support all six aesthetics: `x`, `y`, `theta`, `r`, `color`, and `size`.
 Use the `jittered` modifier to add random displacement, reducing overplotting. Particularly useful for one-dimensional plots or when many points overlap:
 
 ```sql
-visualize cyl as x from cars using jittered points
+visualize
+  cyl as x
+from cars
+using jittered points
 ```
 
 ![Jittered points](../assets/images/jittered-points.png)
@@ -51,10 +58,14 @@ visualize cyl as x from cars using jittered points
 
 ## Bars
 
-Bars render data as rectangular bars, useful for categorical comparisons and distributions.
+Bars render data as rectangular bars, suitable for categorical comparisons and distributions.
 
 ```sql
-visualize cut as x, price as y from diamonds using bars
+visualize
+  cut as x,
+  price as y
+from diamonds
+using bars
 ```
 
 ![Basic bar chart](../assets/images/basic-bar-chart.png)
@@ -71,7 +82,12 @@ visualize cut as x, price as y from diamonds using bars
 When a `color` aesthetic is present, bars are stacked by default:
 
 ```sql
-visualize cut as x, price as y, color as color from diamonds using bars
+visualize
+  cut as x,
+  price as y,
+  color as color
+from diamonds
+using bars
 ```
 
 ![Stacked bar chart with color](../assets/images/bar-chart-color.png)
@@ -81,7 +97,12 @@ visualize cut as x, price as y, color as color from diamonds using bars
 Use the `unstacked` modifier to place grouped bars side-by-side:
 
 ```sql
-visualize cut as x, price as y, color as color from diamonds using unstacked bars
+visualize
+  cut as x,
+  price as y,
+  color as color
+from diamonds
+using unstacked bars
 ```
 
 ![Unstacked bar chart](../assets/images/unstacked-bars.png)
@@ -90,10 +111,14 @@ visualize cut as x, price as y, color as color from diamonds using unstacked bar
 
 ## Lines
 
-Lines connect data points in order, useful for time series and trend visualization.
+Lines connect data points in order, suitable for time series and trend visualization.
 
 ```sql
-visualize date as x, pop as y from economics using line
+visualize
+  date as x,
+  pop as y
+from economics
+using line
 ```
 
 ![Basic line chart](../assets/images/basic-line-chart.png)
@@ -108,7 +133,11 @@ visualize date as x, pop as y from economics using line
 Use the `regression` modifier to draw a fitted regression line (OLS) instead of connecting individual points:
 
 ```sql
-visualize hp as x, mpg as y from cars using regression line
+visualize
+  hp as x,
+  mpg as y
+from cars
+using regression line
 ```
 
 The `regression` modifier has additional constraints:
@@ -123,7 +152,11 @@ The `regression` modifier has additional constraints:
 Box plots display the distribution of numerical data through quartiles.
 
 ```sql
-visualize cut as x, price as y from diamonds using boxes
+visualize
+  cut as x,
+  price as y
+from diamonds
+using boxes
 ```
 
 ![Basic box plot](../assets/images/basic-boxplot.png)

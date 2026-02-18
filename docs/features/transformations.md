@@ -12,7 +12,13 @@ col_expr = identifier
 CTAs are used in place of plain column names wherever a column expression is expected:
 
 ```sql
-visualize bin(mpg) as x, count(*) as y from cars group by bin(mpg) using bars
+visualize
+  bin(mpg) as x,
+  count(*) as y
+from cars
+group by
+  bin(mpg)
+using bars
 ```
 
 ---
@@ -32,7 +38,13 @@ The `bin()` transformation discretizes a numerical column into **5 equal-width b
 `bin()` is typically paired with `count(*)` to create histograms:
 
 ```sql
-visualize bin(mpg) as x, count(*) as y from cars group by bin(mpg) using bars
+visualize
+  bin(mpg) as x,
+  count(*) as y
+from cars
+group by
+  bin(mpg)
+using bars
 ```
 
 ![Histogram of mpg](../assets/images/histogram.png)
@@ -47,10 +59,15 @@ visualize bin(mpg) as x, count(*) as y from cars group by bin(mpg) using bars
 When a binned axis also has a `log` [scale](scales.md), bins are computed in log-space rather than linear space. This produces buckets that are equal-width on the log-transformed axis:
 
 ```sql
-visualize bin(price) as x, count(*) as y from diamonds
-group by bin(price)
+visualize
+  bin(price) as x,
+  count(*) as y
+from diamonds
+group by
+  bin(price)
 using bars
-scale by log(x)
+scale by
+  log(x)
 ```
 
 ![Log-spaced histogram](../assets/images/log-histogram.png)
@@ -66,7 +83,13 @@ The `count(*)` aggregation counts the number of rows per group. It is the only a
 `count(*)` is always used with `*` as its argument — it cannot be applied to a specific column name.
 
 ```sql
-visualize cut as x, count(*) as y from diamonds group by cut using bars
+visualize
+  cut as x,
+  count(*) as y
+from diamonds
+group by
+  cut
+using bars
 ```
 
 ![Count bar chart](../assets/images/count-bar-chart.png)
@@ -84,7 +107,13 @@ visualize cut as x, count(*) as y from diamonds group by cut using bars
 The most common CTA pattern is combining `bin()` and `count(*)` to produce histograms:
 
 ```sql
-visualize bin(mpg) as x, count(*) as y from cars group by bin(mpg) using bars
+visualize
+  bin(mpg) as x,
+  count(*) as y
+from cars
+group by
+  bin(mpg)
+using bars
 ```
 
 The `bin()` transformation discretizes the column, and `count(*)` counts the number of original rows that fall into each bin. The `group by` clause must include the `bin()` expression.
@@ -94,9 +123,14 @@ The `bin()` transformation discretizes the column, and `count(*)` counts the num
 Add a `color` aesthetic (also in `group by`) to compare distributions across categories:
 
 ```sql
-visualize bin(mpg) as x, count(*) as y, cyl_cat as color
+visualize
+  bin(mpg) as x,
+  count(*) as y,
+  cyl_cat as color
 from (select *, cast(cyl as varchar) as cyl_cat from cars)
-group by bin(mpg), cyl_cat
+group by
+  bin(mpg),
+  cyl_cat
 using bars
 ```
 

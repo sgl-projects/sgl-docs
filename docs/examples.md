@@ -11,7 +11,11 @@ SGL examples organized by category. Each example shows the SGL statement and its
 A simple scatterplot mapping two numerical columns to position.
 
 ```sql
-visualize hp as x, mpg as y from cars using points
+visualize
+  hp as x,
+  mpg as y
+from cars
+using points
 ```
 
 ![Basic scatterplot](assets/images/basic-scatterplot.png)
@@ -21,7 +25,12 @@ visualize hp as x, mpg as y from cars using points
 Encode a third variable as point color.
 
 ```sql
-visualize hp as x, mpg as y, cyl as color from cars using points
+visualize
+  hp as x,
+  mpg as y,
+  cyl as color
+from cars
+using points
 ```
 
 ![Scatterplot with color](assets/images/scatterplot-color.png)
@@ -31,7 +40,12 @@ visualize hp as x, mpg as y, cyl as color from cars using points
 Map a numerical column to point size.
 
 ```sql
-visualize hp as x, mpg as y, wt as size from cars using points
+visualize
+  hp as x,
+  mpg as y,
+  wt as size
+from cars
+using points
 ```
 
 ![Scatterplot with size](assets/images/scatterplot-size.png)
@@ -41,7 +55,10 @@ visualize hp as x, mpg as y, wt as size from cars using points
 Map only one axis for a strip plot.
 
 ```sql
-visualize mpg as x from cars using points
+visualize
+  mpg as x
+from cars
+using points
 ```
 
 ![One-dimensional scatter](assets/images/one-dim-scatter.png)
@@ -51,7 +68,10 @@ visualize mpg as x from cars using points
 Reduce overplotting with random jitter.
 
 ```sql
-visualize cyl as x from cars using jittered points
+visualize
+  cyl as x
+from cars
+using jittered points
 ```
 
 ![Jittered points](assets/images/jittered-points.png)
@@ -61,7 +81,11 @@ visualize cyl as x from cars using jittered points
 A bar chart with categorical x-axis and numerical y-axis.
 
 ```sql
-visualize cut as x, price as y from diamonds using bars
+visualize
+  cut as x,
+  price as y
+from diamonds
+using bars
 ```
 
 ![Basic bar chart](assets/images/basic-bar-chart.png)
@@ -71,7 +95,11 @@ visualize cut as x, price as y from diamonds using bars
 A time series displayed as a line.
 
 ```sql
-visualize date as x, pop as y from economics using line
+visualize
+  date as x,
+  pop as y
+from economics
+using line
 ```
 
 ![Line chart](assets/images/basic-line-chart.png)
@@ -81,7 +109,11 @@ visualize date as x, pop as y from economics using line
 Distribution of a numerical column across categories.
 
 ```sql
-visualize cut as x, price as y from diamonds using boxes
+visualize
+  cut as x,
+  price as y
+from diamonds
+using boxes
 ```
 
 ![Box plot](assets/images/basic-boxplot.png)
@@ -95,7 +127,13 @@ visualize cut as x, price as y from diamonds using boxes
 Count rows per category.
 
 ```sql
-visualize cut as x, count(*) as y from diamonds group by cut using bars
+visualize
+  cut as x,
+  count(*) as y
+from diamonds
+group by
+  cut
+using bars
 ```
 
 ![Count bar chart](assets/images/count-bar-chart.png)
@@ -105,7 +143,13 @@ visualize cut as x, count(*) as y from diamonds group by cut using bars
 Bin a numerical column and count occurrences.
 
 ```sql
-visualize bin(mpg) as x, count(*) as y from cars group by bin(mpg) using bars
+visualize
+  bin(mpg) as x,
+  count(*) as y
+from cars
+group by
+  bin(mpg)
+using bars
 ```
 
 ![Histogram](assets/images/histogram.png)
@@ -115,9 +159,14 @@ visualize bin(mpg) as x, count(*) as y from cars group by bin(mpg) using bars
 Compare distributions across categories with stacked colored bars.
 
 ```sql
-visualize bin(mpg) as x, count(*) as y, cyl_cat as color
+visualize
+  bin(mpg) as x,
+  count(*) as y,
+  cyl_cat as color
 from (select *, cast(cyl as varchar) as cyl_cat from cars)
-group by bin(mpg), cyl_cat
+group by
+  bin(mpg),
+  cyl_cat
 using bars
 ```
 
@@ -128,10 +177,15 @@ using bars
 Use a log scale for skewed distributions — bins are automatically log-spaced.
 
 ```sql
-visualize bin(price) as x, count(*) as y from diamonds
-group by bin(price)
+visualize
+  bin(price) as x,
+  count(*) as y
+from diamonds
+group by
+  bin(price)
 using bars
-scale by log(x)
+scale by
+  log(x)
 ```
 
 ![Log-spaced histogram](assets/images/log-histogram.png)
@@ -145,7 +199,12 @@ scale by log(x)
 Bars are stacked by default when a color aesthetic is present.
 
 ```sql
-visualize cut as x, price as y, color as color from diamonds using bars
+visualize
+  cut as x,
+  price as y,
+  color as color
+from diamonds
+using bars
 ```
 
 ![Stacked bars](assets/images/bar-chart-color.png)
@@ -155,7 +214,12 @@ visualize cut as x, price as y, color as color from diamonds using bars
 Place grouped bars side-by-side instead of stacking.
 
 ```sql
-visualize cut as x, price as y, color as color from diamonds using unstacked bars
+visualize
+  cut as x,
+  price as y,
+  color as color
+from diamonds
+using unstacked bars
 ```
 
 ![Unstacked bars](assets/images/unstacked-bars.png)
@@ -165,7 +229,13 @@ visualize cut as x, price as y, color as color from diamonds using unstacked bar
 Use `collect by` to draw multiple lines on the same plot.
 
 ```sql
-visualize letter as x, number as y from synth collect by boolean using lines
+visualize
+  letter as x,
+  number as y
+from synth
+collect by
+  boolean
+using lines
 ```
 
 ![Multi-line chart](assets/images/multi-line.png)
@@ -179,9 +249,17 @@ visualize letter as x, number as y from synth collect by boolean using lines
 Overlay a regression line on a scatterplot using explicit layers.
 
 ```sql
-visualize hp as x, mpg as y from cars using points
+visualize
+  hp as x,
+  mpg as y
+from cars
+using points
 layer
-visualize hp as x, mpg as y from cars using regression line
+visualize
+  hp as x,
+  mpg as y
+from cars
+using regression line
 ```
 
 ![Regression layer](assets/images/scatterplot-regression-layer.png)
@@ -191,7 +269,11 @@ visualize hp as x, mpg as y from cars using regression line
 Same result with the shorthand `using (...)` syntax.
 
 ```sql
-visualize hp as x, mpg as y from cars using (points layer regression line)
+visualize
+  hp as x,
+  mpg as y
+from cars
+using (points layer regression line)
 ```
 
 ![Regression shorthand](assets/images/scatterplot-regression-shorthand.png)
@@ -201,7 +283,14 @@ visualize hp as x, mpg as y from cars using (points layer regression line)
 Apply log transformation to axes.
 
 ```sql
-visualize hp as x, mpg as y from cars using points scale by log(x), log(y)
+visualize
+  hp as x,
+  mpg as y
+from cars
+using points
+scale by
+  log(x),
+  log(y)
 ```
 
 ![Log scale scatter](assets/images/log-scale-scatter.png)
@@ -211,10 +300,13 @@ visualize hp as x, mpg as y from cars using points scale by log(x), log(y)
 Split a scatterplot into panels by a categorical variable.
 
 ```sql
-visualize hp as x, mpg as y
+visualize
+  hp as x,
+  mpg as y
 from (select *, cast(cyl as varchar) as cyl_cat from cars)
 using points
-facet by cyl_cat
+facet by
+  cyl_cat
 ```
 
 ![Faceted scatterplot](assets/images/faceted-scatterplot.png)
@@ -224,11 +316,19 @@ facet by cyl_cat
 Facet by two variables — one horizontally, one vertically.
 
 ```sql
-visualize hp as x, mpg as y
-from (select *, cast(cyl as varchar) as cyl_cat,
-                cast(am as varchar) as am_cat from cars)
+visualize
+  hp as x,
+  mpg as y
+from (
+  select *,
+    cast(cyl as varchar) as cyl_cat,
+    cast(am as varchar) as am_cat
+  from cars
+)
 using points
-facet by cyl_cat horizontally, am_cat vertically
+facet by
+  cyl_cat horizontally,
+  am_cat vertically
 ```
 
 ![2D faceted scatterplot](assets/images/faceted-2d-scatterplot.png)
@@ -238,8 +338,16 @@ facet by cyl_cat horizontally, am_cat vertically
 Override default axis and legend labels.
 
 ```sql
-visualize hp as x, mpg as y, cyl as color from cars using points
-title x as 'Horsepower', y as 'Miles Per Gallon', color as 'Cylinders'
+visualize
+  hp as x,
+  mpg as y,
+  cyl as color
+from cars
+using points
+title
+  x as 'Horsepower',
+  y as 'Miles Per Gallon',
+  color as 'Cylinders'
 ```
 
 ![Titled scatterplot](assets/images/titled-scatterplot.png)
@@ -249,7 +357,13 @@ title x as 'Horsepower', y as 'Miles Per Gallon', color as 'Cylinders'
 Use polar coordinates with `theta`, `color`, and `count(*)`.
 
 ```sql
-visualize count(*) as theta, cut as color from diamonds group by cut using bars
+visualize
+  count(*) as theta,
+  cut as color
+from diamonds
+group by
+  cut
+using bars
 ```
 
 ![Pie chart](assets/images/pie-chart.png)
@@ -263,7 +377,9 @@ visualize count(*) as theta, cut as color from diamonds group by cut using bars
 Use a SQL subquery to filter rows before plotting.
 
 ```sql
-visualize hp as x, mpg as y
+visualize
+  hp as x,
+  mpg as y
 from (select * from cars where mpg > 20)
 using points
 ```
@@ -275,10 +391,13 @@ using points
 Cast a numerical column to categorical for use as a facet variable.
 
 ```sql
-visualize hp as x, mpg as y
+visualize
+  hp as x,
+  mpg as y
 from (select *, cast(cyl as varchar) as cyl_cat from cars)
 using points
-facet by cyl_cat
+facet by
+  cyl_cat
 ```
 
 ![Faceted scatterplot](assets/images/faceted-scatterplot.png)

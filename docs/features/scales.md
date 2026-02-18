@@ -13,7 +13,13 @@ scale_expr   = scale_type "(" aesthetic_name ")"
 The `scale` clause appears after the last `using` clause (it is a graphic clause that applies globally):
 
 ```sql
-visualize hp as x, mpg as y from cars using points scale by log(x)
+visualize
+  hp as x,
+  mpg as y
+from cars
+using points
+scale by
+  log(x)
 ```
 
 ## Log Scale
@@ -25,7 +31,13 @@ The only supported scale type is `log`, which applies a base-10 logarithmic tran
 Apply a log scale to one axis:
 
 ```sql
-visualize hp as x, mpg as y from cars using points scale by log(x)
+visualize
+  hp as x,
+  mpg as y
+from cars
+using points
+scale by
+  log(x)
 ```
 
 ![Log scale on x-axis](../assets/images/log-scale-scatter.png)
@@ -35,7 +47,14 @@ visualize hp as x, mpg as y from cars using points scale by log(x)
 Apply log scales to both axes by separating with a comma:
 
 ```sql
-visualize hp as x, mpg as y from cars using points scale by log(x), log(y)
+visualize
+  hp as x,
+  mpg as y
+from cars
+using points
+scale by
+  log(x),
+  log(y)
 ```
 
 ## Rules
@@ -54,7 +73,12 @@ The scale can only reference aesthetics that appear in at least one layer's aest
 
 ```sql
 -- Invalid: no 'y' aesthetic to scale
-visualize hp as x from cars using points scale by log(y)
+visualize
+  hp as x
+from cars
+using points
+scale by
+  log(y)
 ```
 
 ## Interaction with Binning
@@ -62,10 +86,15 @@ visualize hp as x from cars using points scale by log(y)
 When `bin()` is used on an axis that also has a log scale, the binning algorithm automatically switches to **log-spaced bins**. Instead of dividing the range into equal-width intervals in linear space, it divides the range into equal-width intervals in log-space:
 
 ```sql
-visualize bin(price) as x, count(*) as y from diamonds
-group by bin(price)
+visualize
+  bin(price) as x,
+  count(*) as y
+from diamonds
+group by
+  bin(price)
 using bars
-scale by log(x)
+scale by
+  log(x)
 ```
 
 ![Log-spaced histogram](../assets/images/log-histogram.png)
