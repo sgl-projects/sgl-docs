@@ -1,0 +1,64 @@
+site_name: SGL — Structured Graphics Language
+site_url: https://jochapjo.github.io/sgl-docs
+site_description: Documentation for SGL, a declarative language for generating data visualizations from database connections.
+site_author: Jon Chapman
+
+repo_url: https://github.com/jochapjo/sgl-docs
+repo_name: jochapjo/sgl-docs
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - content.code.copy
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Language Reference: reference.md
+  - Features:
+    - Aesthetic Mappings: features/aesthetics.md
+    - Geom Types: features/geoms.md
+    - Column Transformations: features/transformations.md
+    - Grouping & Aggregation: features/grouping.md
+    - Collections: features/collections.md
+    - Layering: features/layering.md
+    - Scales: features/scales.md
+    - Faceting: features/faceting.md
+    - Titles: features/titles.md
+    - Polar Coordinates: features/polar.md
+    - Subqueries: features/subqueries.md
+  - Examples Gallery: examples.md
+  - Implementations: implementations.md
