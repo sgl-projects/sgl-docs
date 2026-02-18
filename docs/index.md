@@ -1,6 +1,6 @@
 # SGL — Structured Graphics Language
 
-SGL is a declarative, SQL-like language for generating data visualizations directly from database connections. Instead of writing plotting code in R, Python, or JavaScript, you write a single SGL statement that describes what you want to see — which columns map to which visual properties, the data source, and the type of chart — and an SGL implementation renders the plot.
+SGL is a declarative, SQL-like language for generating data visualizations directly from database tables. Instead of writing plotting code in R, Python, or JavaScript, you write a single SGL statement that describes what you want to see — which columns map to which visual properties, the data source, and the type of chart — and an SGL implementation renders the plot.
 
 SGL is designed to be **portable across implementations**. The same statement produces equivalent visualizations whether you're using the [R implementation](implementations.md), a future Python package, or any other host environment. This site documents the language itself, independent of any specific implementation.
 

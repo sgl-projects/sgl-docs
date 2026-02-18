@@ -1,6 +1,6 @@
 # Implementations
 
-SGL is a **language specification** — it defines the syntax and semantics for generating data visualizations from database connections. Implementations bring SGL to life in specific programming environments, handling the connection to databases, parsing SGL statements, and rendering the resulting plots.
+SGL is a **language specification** — it defines the syntax and semantics for generating data visualizations directly from database tables. Implementations bring SGL to life in specific programming environments, handling database access, parsing SGL statements, and rendering the resulting plots.
 
 ---
 
