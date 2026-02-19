@@ -26,5 +26,5 @@ env/
 .DS_Store
 Thumbs.db
 
-# Claude
-.claude/
+# Claude (track agents and agent-memory, ignore local settings)
+.claude/settings.local.json
