@@ -1,6 +1,6 @@
 # Scales
 
-The `scale` clause transforms the axis scale for positional aesthetics. Currently, SGL supports logarithmic (base 10) scaling.
+The `scale` clause applies a logarithmic (base 10) transformation to an aesthetic's scale.
 
 ## Syntax
 
@@ -59,13 +59,22 @@ scale by
 
 ## Rules
 
-### Positional Aesthetics Only
+### Any Aesthetic with Numerical Mappings
 
-Scales can only be applied to positional aesthetics (`x`, `y`, `theta`, `r`). Attempting to scale a non-positional aesthetic like `color` or `size` is an error.
+Scales can be applied to any aesthetic — positional or non-positional — as long as it has a numerical mapping in every layer where it appears. Categorical or temporal mappings cannot be log-scaled.
 
-### Numerical Mappings Only
+For example, applying a log scale to a color gradient:
 
-The scaled aesthetic must have a numerical mapping in every layer where it appears. Categorical or temporal mappings cannot be log-scaled.
+```sql
+visualize
+  hp as x,
+  mpg as y,
+  cyl as color
+from cars
+using points
+scale by
+  log(color)
+```
 
 ### Aesthetic Must Exist
 

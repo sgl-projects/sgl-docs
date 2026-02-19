@@ -71,7 +71,7 @@ SGL supports at most two facet expressions. Specifying three or more is an error
 
 ### Direction Requirement for Two Facets
 
-When two facet columns are specified, one must be `horizontally` and the other `vertically`. Having both as `horizontally` or both as `vertically` is an error.
+When two facet columns are specified and both have explicit direction keywords, the directions must differ — both cannot be `horizontally` or both `vertically`. Facets without a direction keyword are always valid alongside any other facet, so `facet by col1, col2` (both with default direction) is valid.
 
 !!! note
     For a single facet, the direction keyword is optional. When omitted, panels wrap automatically.

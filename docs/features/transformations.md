@@ -51,7 +51,7 @@ using bars
 
 ### Constraints
 
-- `bin()` can only be applied to **numerical** or **temporal** columns. Applying it to a categorical column produces an error.
+- `bin()` can only be applied to **numerical** or **temporal** columns. Applying it to a categorical column produces an error. The binning algorithm is designed for numerical data; applying it to temporal columns is permitted but may not produce meaningful results.
 - Binned columns are treated as categorical/binned for validation purposes (e.g., they satisfy the "one categorical, one numerical" constraint for bars).
 
 ### Log-Spaced Binning

@@ -86,9 +86,9 @@ collect by
 using lines
 ```
 
-### With group by
+### With group by (Line Geoms)
 
-When both `group by` and `collect by` are present:
+When both `group by` and `collect by` are present on a line geom:
 
 1. **Non-positional groupings must be in collect by** — any grouping column that is not mapped to a positional aesthetic must appear in the `collect by` clause.
 2. **Collections must have corresponding groupings** — every column in `collect by` must also appear in `group by`.
@@ -96,11 +96,12 @@ When both `group by` and `collect by` are present:
 
 ### Box Plot Collections
 
-For box plots, the collection rules are more specific:
+For box plots, the collection rules differ from lines:
 
 - Categorical or binned columns mapped to positional aesthetics must be included in an explicit collection.
 - Numerical or temporal (unbinned) columns mapped to positional aesthetics cannot be included in a collection.
 - Color mappings must have corresponding collections if an explicit collection is provided.
+- When `group by` is present, every collection expression must also have a corresponding grouping.
 
 !!! note
     The distinction between `group by` and `collect by` is fundamental to SGL's design: `group by` answers "how should data be aggregated?" while `collect by` answers "how should data be visually separated?"

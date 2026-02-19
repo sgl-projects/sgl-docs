@@ -55,6 +55,8 @@ col_expr         = identifier
                  | cta_name "(" identifier ")"
 ```
 
+In the reference implementation, the CTA name position is an identifier validated at parse time. Any string matching the identifier pattern is accepted by the grammar; invalid CTA names produce a parse error.
+
 ### From Clause
 
 The data source is either a table name or a parenthesized SQL subquery:
@@ -256,7 +258,7 @@ Both singular and plural forms are accepted:
 |-------|-------------|
 | `log` | Logarithmic (base 10) scale |
 
-Only positional aesthetics (`x`, `y`, `theta`, `r`) can be scaled.
+Scales can be applied to any aesthetic, not only positional ones. The scaled aesthetic must exist in at least one layer and must have a numerical mapping.
 
 ### Identifiers
 
@@ -264,7 +266,10 @@ Identifiers are unquoted strings matching `[^ '\t\n,()]+` that are not keywords.
 
 - Column names (e.g., `mpg`, `hp`, `cyl`)
 - Table names (in the `from` clause)
-- Aesthetic names, geom names, CTA names, and scale types are also parsed as identifiers and then validated
+- Aesthetic names, geom names, CTA names, representation modifiers, and scale types are also parsed as identifiers and then validated in context
+
+!!! note
+    Geom names, CTA names, aesthetic names, representation modifiers, and scale types are **not** reserved keywords. They are ordinary identifiers that are validated based on their position in the grammar. This means strings like `bin`, `count`, `log`, `points`, `line`, `x`, `color`, `regression`, `unstacked`, and `jittered` can be used as column names or table names without conflict.
 
 ### String Literals
 
@@ -288,7 +293,7 @@ Every layer must have at least one positional aesthetic. A layer cannot mix Cart
 
 ### Grouping Rules
 
-1. If any aesthetic mapping uses an aggregation (`count(*)`), then a `group by` clause is required unless the aggregation is the only mapping.
+1. If any aesthetic mapping uses `count(*)` and there are also non-aggregated mappings, then a `group by` clause is required. If every aesthetic mapping is `count(*)`, no `group by` is needed.
 2. Every non-aggregated aesthetic mapping must appear in the `group by` clause.
 3. If a `group by` clause is provided, at least one aggregation must be present in the `visualize` clause.
 4. Grouping expressions cannot contain aggregations (e.g., `group by count(*)` is invalid).
@@ -298,7 +303,8 @@ Every layer must have at least one positional aesthetic. A layer cannot mix Cart
 - `collect by` is only valid for **collective geoms**: `line`/`lines` and `box`/`boxes`.
 - For non-collective geoms (`point`/`points`, `bar`/`bars`), specifying `collect by` is an error.
 - Without a `group by`, collection expressions must be plain column names (no CTAs).
-- With a `group by`, collections must have corresponding groupings, and non-positional groupings must be included in the `collect by` clause.
+- **Lines** with a `group by`: collections must have corresponding groupings, non-positional groupings must be included in the `collect by` clause, and positional groupings cannot be collected.
+- **Boxes** with a `group by`: every collection expression must also have a corresponding grouping.
 
 ### Layering Rules
 
@@ -309,13 +315,13 @@ Every layer must have at least one positional aesthetic. A layer cannot mix Cart
 ### Scale Rules
 
 - Only `log` is supported as a scale type.
-- Scales can only be applied to aesthetics that exist in at least one layer.
+- Scales can be applied to any aesthetic that exists in at least one layer's aesthetic mappings — positional or non-positional.
 - Scaled aesthetics must have numerical mappings.
 
 ### Facet Rules
 
 - Maximum of 2 facet expressions.
-- For 2 facets, one must specify `horizontally` and the other `vertically`.
+- For 2 facets, if both specify an explicit direction, they must differ — both cannot be `horizontally` or both `vertically`. Facets with no direction keyword are always valid alongside any other facet.
 - Facet columns must exist in at least one layer's data source.
 - Facet columns must be categorical type.
 
@@ -360,9 +366,9 @@ SGL classifies database column types into three categories:
 
 | Category | Examples |
 |----------|---------|
-| **Numerical** | INTEGER, BIGINT, FLOAT, DOUBLE, DECIMAL, SMALLINT, TINYINT, and their aliases |
-| **Categorical** | VARCHAR (CHAR, TEXT, STRING), BOOLEAN (BOOL, LOGICAL) |
-| **Temporal** | DATE, TIMESTAMP (DATETIME), TIME, INTERVAL, TIMESTAMPTZ |
+| **Numerical** | INTEGER, BIGINT, FLOAT, DOUBLE, DECIMAL, SMALLINT, TINYINT, HUGEINT, UBIGINT, UHUGEINT, UINTEGER, USMALLINT, UTINYINT, INTERVAL, TIME, and their aliases |
+| **Categorical** | VARCHAR (CHAR, TEXT, STRING), UUID, BOOLEAN (BOOL, LOGICAL) |
+| **Temporal** | DATE, TIMESTAMP (DATETIME), TIMESTAMP WITH TIME ZONE (TIMESTAMPTZ) |
 
 These categories determine which aesthetics a column can be mapped to and how it interacts with geom-specific constraints.
 
